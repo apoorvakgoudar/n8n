@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: n8n
+    env: node
+    plan: free
+    buildCommand: |
+      pnpm install
+      pnpm build
+    startCommand: pnpm start
+    envVars:
+      - key: N8N_ENCRYPTION_KEY
+        value: replace_with_a_strong_random_string
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: 'true'
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: yourpassword
+      - key: N8N_PORT
+        value: '5678'
+      - key: WEBHOOK_TUNNEL_URL
+        value: ''
